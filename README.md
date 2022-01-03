@@ -32,7 +32,7 @@ kubectl apply -f configmap.yaml
 kubectl apply -f app.yaml
 
 * When the Deployment is up and running, i.e. Pod is downloaded and started correctly, try to access the application. You should see a start screen with the Connection Information pointing to Your database or whatever is specified in the prior secret and the configmap.
-![First Screen](scrn_3.jpg)
+![First Screen](scrn_3.png)
 
 
 3) the "Verrazzano" way
