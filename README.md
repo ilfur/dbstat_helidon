@@ -8,8 +8,8 @@ There are two Deployments available for this application:
 One Deployment for a typical Kubernetes Cluster which defines a Secret, a Service and a Container/POD Deployment.
 The other Deployment defines a Verrazzano Application (a plain Kubernetes Cluster with Verrazzano installation required) which includes Logging with ElasticSearch, SSL Access to a Load Balancer using Istio and Keycloak, Monitoring with Prometheus/Grafana, Network Visualisation with Istio and Kiali.
 
-##To install the application:
-###1) In the plain, regular way
+## To install the application:
+### 1) In the plain, regular way
 * clone the project to You local drive and hop into the "helidon-db-status" subdirectory
 git clone https://ilfur/dbstat_helidon
 cd helidon-db-status
@@ -39,4 +39,4 @@ When Clicking on the "DBParams" Tab on the right, a REST call is issued against 
 
 
 
-###3) the "Verrazzano" way
+### 3) the "Verrazzano" way
