@@ -40,3 +40,35 @@ When Clicking on the "DBParams" Tab on the right, a REST call is issued against 
 
 
 ### 3) the "Verrazzano" way
+* (same as in 1.) clone the project to You local drive and hop into the "helidon-db-status" subdirectory
+git clone https://ilfur/dbstat_helidon
+cd helidon-db-status
+
+* (same as in 1.) In a regular Kubernetes Cluster, create a new namespace, say "dbstat-helidon"
+kubectl create namespace dbstat-helidon
+
+* (same as in 1.) In that namespace, create a new Secret to access an existing Oracle Database as user "system"
+kubectl create secret generic db-user-pass \
+   --from-literal=pdb_admin=system \
+   --from-literal=pdb_pwd='mypassword' \
+   --from-literal=pdb_conn='192.168.10.123:1521/mypdb' \
+   -n dbstat-helidon
+   
+* (same as in 1.) In that same namespace, create a new ConfigMap holding the Connect String to the Oracle Database.
+This is redundant to the previously created secret, but a good test, showcase and demo to do so.
+kubectl apply -f configmap.yaml
+
+* Now, instead of defining deployments, services, .... separately, lets define one (or most often several) application component
+kubectl apply -f vz_comp.yaml
+This vz_comp.yaml basically defines a kubernetes deployment using the prebuilt container that is also used in the prior example. It also uses a "VerrazzanoHelidonWorkload" type, which specifies several things, among those the way how log output is gathered from the container. Don't forget, this is an extension to the basic Kubernetes yaml Syntax, but this extension is standardized, using the "Open Application Model" specification.
+
+* Now, add the component that was just defined to an application, specifying more endorsed features like a load-balanced ingress and prometheus metric support. Those endorsed Features are called "Traits" in the Open Application Model spec.
+kubectl apply -f vz_app.yaml
+
+The sample application will be reachable through the browser, just as in th prior basic deployment. But now, Verrazzano will have also created:
+#### Networking
+* a (global) DNS entry for Your application, depending on the DNS service configured whe installing Verrazzano
+* a SSL certificate for the new DNS host entry
+* a load balancer through an Istio Ingress definition
+* 
+
