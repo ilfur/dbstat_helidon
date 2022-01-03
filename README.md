@@ -6,7 +6,7 @@ Privileged Database access (sysdba role, sys or system user) is required.
 This application can be used to testify the OracleCMP Operator for Kubernetes (https://github.com/ilfur/k8s_operator_cloudmgmtpack), but also to showcase the difference between a plain Kubernetes Deployment and a Verrazzano Deployment.
 There are two Deployments available for this application: 
 One Deployment for a typical Kubernetes Cluster which defines a Secret, a Service and a Container/POD Deployment.
-The other Deployment defines a Verrazzano Application (a plain Kubernetes Cluster with Verrazzano installation required) which includes Logging with ElasticSearch, SSL Access to a Load Balancer using Istio and Keycloak, Monitoring with Prometheus/Grafana, Network Visualisation with Istio and Kiali.
+The other Deployment defines a Verrazzano Application (a plain Kubernetes Cluster with Verrazzano installation required) which includes Logging with ElasticSearch, SSL Access to a Load Balancer using Istio and cert-manager, Monitoring with Prometheus/Grafana, Network Visualisation with Istio and Kiali.
 
 ## To install the application:
 ### 1) In the plain, regular way
@@ -68,7 +68,21 @@ kubectl apply -f vz_app.yaml
 The sample application will be reachable through the browser, just as in th prior basic deployment. But now, Verrazzano will have also created:
 #### Networking
 * a (global) DNS entry for Your application, depending on the DNS service configured whe installing Verrazzano
-* a SSL certificate for the new DNS host entry
-* a load balancer through an Istio Ingress definition
-* 
+* a SSL certificate for the new DNS host entry using cert-manager
+* a software load balancer through an Istio Ingress definition
+* since going through Istio, network monitoring and visualisation is enabled through Kiali
+#### Monitoring
+* a Prometheus scraping definition
+* standard Grafana Dashboards for Helidon (and others) - the Helidon Framework in use offers metric support for custom metrics 
+#### Logging
+* a side car, an additional container with "fluentd" in it which is attached to the application container and sends all log information to a pre-installed ElasticSearch Engine
+* a new log is populated to Elasticsearch for each kubernetes namespace in use. Just create a new Index on top of a new log if not used before and You can see all e.g. StdOut logs entries immediately
+#### More
+* Single SignOn could be done through the pre-installed KeyCloak by SAML, JWT and other mechanisms. The Application would need to check that, it's not part of Verrazzano. The Verrazzano Monitoring and Admin UI's are using Keycloak SSO themselves, though.
+* Tracing and traces Monitoring through Jaeger and Opentracing API in the Aplication are not yet part of Verrazzano, but could be easily installed and used on top of what is already there.
+
+So in addition to just using the application through a network as specified in the first example, some more applications can be used on-the-fly for in-depth views to the application.
+![Monitoring](scrn_5.png)
+![Logging](scrn_6.png)
+![Network Visualisation](scrn_7.png)
 
