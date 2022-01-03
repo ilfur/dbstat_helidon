@@ -32,7 +32,7 @@ kubectl apply -f configmap.yaml
 kubectl apply -f app.yaml
 
 * When the Deployment is up and running, i.e. Pod is downloaded and started correctly, try to access the application. You should see a start screen with the Connection Information pointing to Your database or whatever is specified in the prior secret and the configmap.
-[My image](ilfur.github.com/dbstat_helidon/scrn3.jpg)
+[First Screen](ilfur.github.com/dbstat_helidon/scrn3.jpg)
 
 
 3) the "Verrazzano" way
