@@ -1,0 +1,15 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h4>DB connection info</h4>
+<div id="DBinfo" class="oj-flex-item oj-md-12 oj-sm-12 right">
+                  <oj-form-layout id="dbInfoForm" label-edge="inside">
+                  <oj-input-text id="dbUser" value= "{{dbUser}}" label-hint="Database username"></oj-input-text>
+                  <oj-text-area class="oj-form-control-full-width" id="dbUrl" max-rows="-1" value= "{{dbUrl}}" label-hint="Database connect"></oj-text-area>
+                  <oj-button id="restart_btn" on-click='[[buttonClick]]'><span><oj-bind-text value="[[buttonTxt]]"></oj-bind-text></span></oj-button>
+                </oj-form-layout>
+              </div>
+</div>

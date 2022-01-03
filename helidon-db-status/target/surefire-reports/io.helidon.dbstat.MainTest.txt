@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: io.helidon.dbstat.MainTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 10.026 s <<< FAILURE! - in io.helidon.dbstat.MainTest
+io.helidon.dbstat.MainTest.testHelloWorld  Time elapsed: 1.081 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at io.helidon.dbstat.MainTest.testHelloWorld(MainTest.java:35)
+
