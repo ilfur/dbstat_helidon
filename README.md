@@ -9,7 +9,7 @@ One Deployment for a typical Kubernetes Cluster which defines a Secret, a Servic
 The other Deployment defines a Verrazzano Application (a plain Kubernetes Cluster with Verrazzano installation required) which includes Logging with ElasticSearch, SSL Access to a Load Balancer using Istio and Keycloak, Monitoring with Prometheus/Grafana, Network Visualisation with Istio and Kiali.
 
 To install the application:
-1) the plain, regular way
+1) In the plain, regular way
 * clone the project to You local drive and hop into the "helidon-db-status" subdirectory
 git clone https://ilfur/dbstat_helidon
 cd helidon-db-status
@@ -32,6 +32,7 @@ kubectl apply -f configmap.yaml
 kubectl apply -f app.yaml
 
 * When the Deployment is up and running, i.e. Pod is downloaded and started correctly, try to access the application. You should see a start screen with the Connection Information pointing to Your database or whatever is specified in the prior secret and the configmap.
+[My image](ilfur.github.com/dbstat_helidon/scrn3.jpg)
 
 
 3) the "Verrazzano" way
