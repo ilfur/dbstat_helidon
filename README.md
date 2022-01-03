@@ -31,8 +31,12 @@ kubectl apply -f configmap.yaml
 * Now, do the deployment of the Container itself into that same namespace and register the network service to access the Container through port 8080. There is no need to compile the recently cloned project, since the Container is pre-built and available on docker.io
 kubectl apply -f app.yaml
 
-* When the Deployment is up and running, i.e. Pod is downloaded and started correctly, try to access the application. You should see a start screen with the Connection Information pointing to Your database or whatever is specified in the prior secret and the configmap.
+* When the Deployment is up and running, i.e. Pod is downloaded and started correctly, try to access the application through a browser, using the Worker Node's IP address and port 8080. You should see a start screen with the Connection Information pointing to Your database or whatever is specified in the prior secret and the configmap.
 ![First Screen](scrn_3.png)
+When Clicking on the "DBParams" Tab on the right, a REST call is issued against the application container that does actually connect to the database and read the v$parameters system view. If nothing shows up, have a look at the application log. Probably, the database canot be reached or a SID was used instead of a Service name...
+![Second Screen}(scrn_4.png)
+
+
 
 
 3) the "Verrazzano" way
