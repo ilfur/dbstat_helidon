@@ -83,6 +83,7 @@ The sample application will be reachable through the browser, just as in th prio
 
 So in addition to just using the application through a network as specified in the first example, some more applications can be used on-the-fly for in-depth views to the application.
 ![Monitoring](scrn_5.png)
-![Logging](scrn_6.png)
+![Logging](scrn_8.png)
 ![Network Visualisation](scrn_7.png)
+![Anwendungs Definition](scrn_6.png)
 
